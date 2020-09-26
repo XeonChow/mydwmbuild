@@ -82,7 +82,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "chromium", NULL };
 
 static const char *upvol[]   = { "/home/xeon/.config/scripts/vol-up.sh",  NULL };
@@ -100,12 +100,12 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24"
 
 //static const char *suspendcmd[]  = { "/home/kiteab/scripts/suspend.sh", NULL };
 
-//static const char *screenlockcmd[]  = { "/home/kiteab/scripts/screenlock.sh", NULL};
+static const char *screenlockcmd[]  = { "/home/xeon/.config/scripts/lockscreen.sh", NULL};
 
 static const char *incbacklightcmd[]  = { "/home/xeon/.config/scripts/inc-backlight.sh", NULL};
 static const char *decbacklightcmd[]  = { "/home/xeon/.config/scripts/dec-backlight.sh", NULL};
 
-//static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -117,7 +117,7 @@ static Key keys[] = {
 //	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
 //	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
 //	{ MODKEY,              XK_f,                    spawn,          {.v = nautilustogcmd } },
-//	{ MODKEY|ControlMask,  XK_l,                    spawn,          {.v = screenlockcmd } },
+	{ MODKEY|ControlMask,  XK_l,                    spawn,          {.v = screenlockcmd } },
 	{ 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },
@@ -129,7 +129,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_period,               spawn,          {.v = incbacklightcmd } },
 	{ 0,                   XF86XK_MonBrightnessUp,  spawn,          {.v = incbacklightcmd } },
 	{ 0,                   XF86XK_MonBrightnessDown,spawn,          {.v = decbacklightcmd } },
-//	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
